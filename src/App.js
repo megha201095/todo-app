@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { Container, Paper } from '@material-ui/core';
+import Header from './components/Header';
+import { makeStyles } from '@material-ui/core/styles';
+import Home from '../src/pages/Home';
 
-function App() {
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    '& > *': {
+      margin: theme.spacing(2),
+      width: theme.spacing(150),
+      height: theme.spacing(80),
+      backgroundColor: '#cfe8fc'
+
+    },
+  },
+}));
+function App(props) {
+  const classes = useStyles();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Container maxWidth="lg">
+         <Header />
+           <div className={classes.root}>
+             <Paper elevation={3}>
+               <Home />
+             </Paper>
+           </div>
+      </Container>
     </div>
   );
 }
