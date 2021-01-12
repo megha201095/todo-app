@@ -13,6 +13,24 @@ class HomePage extends React.Component {
             list: list || []
         };
       }
+
+      componentDidMount(){
+        try {
+          fetch(`http://localhost:5000/call/greeting/?id=3`, {
+            method: 'GET',
+            headers : { 
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+             }
+      
+          })
+          .then(response => response.text())
+          .then(data => console.log("data from /call/greeting endpoint is:", data));
+        } catch (error) {
+          console.log('--error--', error);
+        }
+
+      }
         
     /*************************************************************************
       Function to get the values of items in list stored in session storage
@@ -74,7 +92,7 @@ class HomePage extends React.Component {
       return (
         <>
         <div style={{"position": "absolute", "top": "20%","left": "35%", 
-        "columnCount": "2", "display": "flex","align-items": "normal"
+        "columnCount": "2", "display": "flex","alignItems": "normal"
        }}>
         <form  
         noValidate 
