@@ -19,12 +19,13 @@ const useStyles = makeStyles((theme) => ({
 
 const RenderRow = (props) => {
   const { index, style, data } = props;
-  const sessionData = [sessionStorage.getItem('listData') || '']
-console.log('---session ---', sessionData);
   return data.map(i => (
-          <ListItem button style={style} key={index} disablePadding>
+    <div styles={{ height: '500px', overflowY: 'scroll' }}>
+        <ListItem button style={style} key={index} disablePadding>
           <ListItemText primary={i} />
-          </ListItem>
+        </ListItem>  
+    </div>
+         
   ))    
 }
 

@@ -3,20 +3,34 @@ import {TextField} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import ItemList from '../components/List';
 
-class InputField extends React.Component {
+class HomePage extends React.Component {
     
     constructor(props) {
         super(props);
+        const list  = this.getSessionData();
         this.state = {
             task : '',
-            list: []
+            list: list || []
         };
+      }
+        
+    /*************************************************************************
+      Function to get the values of items in list stored in session storage
+    *************************************************************************/
+      getSessionData = () => {
+        try{
+          let list = sessionStorage.getItem('listData');
+          list = list && JSON.parse(list);
+          return list;
+        } catch(err){
+          return null;
+        }
       }
 
   
     /************************************************** 
       Function to get the input value fron the textbox 
-      e -> event
+       e -> event
     ***************************************************/
     handleOnchange = (e) => {
         this.setState({
@@ -32,13 +46,16 @@ class InputField extends React.Component {
       this.setState({
         list:[...this.state.list, task],
         task: ''
-      })
-      sessionStorage.setItem('listData', this.state.list);
+      },
+      ()=>{
+        sessionStorage.setItem('listData', JSON.stringify(this.state.list));
+      }
+      )
     }
-    
+
     render() {
       const classes = this.props;
-      const { list } = this.state
+      const { list, task } = this.state
       return (
         <>
         <form className={classes.root} noValidate autoComplete="off">
@@ -46,6 +63,7 @@ class InputField extends React.Component {
          label="Enter Tasks" 
          variant="outlined" 
          size="medium"
+         value={task}
          onChange={event => this.handleOnchange(event)}
          onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault() //Ristrict to refresh on enter
            if(e.key === 'Enter')     //Enter key will also add values to the list
@@ -61,4 +79,4 @@ class InputField extends React.Component {
       );
     }
   }
-  export default InputField
+  export default HomePage;
