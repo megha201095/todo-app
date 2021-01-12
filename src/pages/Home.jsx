@@ -16,7 +16,7 @@ class HomePage extends React.Component {
 
       componentDidMount(){
         try {
-          fetch(`http://localhost:5000/call/greeting/?id=3`, {
+          fetch(`http://localhost:5000/call/greeting/3`, {
             method: 'GET',
             headers : { 
               'Content-Type': 'application/json',
