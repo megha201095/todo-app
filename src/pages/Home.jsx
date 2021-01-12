@@ -70,12 +70,16 @@ class HomePage extends React.Component {
     }
 
     render() {
-      const classes = this.props;
       const { list, task } = this.state
       return (
         <>
-        <form className={classes.root} noValidate autoComplete="off">
-        <TextField id="outlined-basic" 
+        <div style={{"position": "absolute", "top": "20%","left": "35%", 
+        "columnCount": "2", "display": "flex","align-items": "normal"
+       }}>
+        <form  
+        noValidate 
+        autoComplete="off">
+        <TextField id="standard-basic" 
          label="Enter Tasks" 
          variant="outlined" 
          size="medium"
@@ -87,10 +91,12 @@ class HomePage extends React.Component {
         }}
         />
       </form>
-      <ItemList data={list} deleteFunc={this.deleteItem}/>
-      <Button onClick={this.handleClick} variant="contained" color="primary" size="large">
+      <Button onClick={this.handleClick} variant="contained" color="default" size="large">
         Add Item
       </Button>
+      </div>
+      <ItemList data={list} deleteFunc={this.deleteItem}/>
+
       </>
       );
     }

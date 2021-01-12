@@ -11,8 +11,8 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 300,
     backgroundColor: theme.palette.background.paper,
     position: 'absolute',
-    top: '30%',
-    left: '35%',
+    top: '35%',
+    left: '38%',
     margin: '-25px 0 0 -25px',
   },
 }));
