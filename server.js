@@ -18,9 +18,9 @@ app.use((req, res, next) => {
 	next();
 });
 
-app.get(`/call/greeting/`, (req, res) => {
+app.get(`/call/greeting/:id`, (req, res, id) => {
 	res.status(200);
-    res.send('Hello World, from express_' + req.query.id);
+    res.send('Hello World, from express_' + req.params.id);
     res.end();
 });
 
