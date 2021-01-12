@@ -18,28 +18,25 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const RenderRow = (props) => {
-  const { index, style, data } = props;
-  return data.map(i => (
-    <div styles={{ height: '500px', overflowY: 'scroll' }}>
-        <ListItem button style={style} key={index} disablePadding>
+  const {data, deleteItem } = props;
+  return data.map((i,index) => (
+        <ListItem button key={index} onClick={e => deleteItem(e, index)}>
           <ListItemText primary={i} />
-        </ListItem>  
-    </div>
-         
+        </ListItem>          
   ))    
 }
 
 RenderRow.propTypes = {
-  index: PropTypes.number.isRequired,
-  style: PropTypes.object.isRequired,
+  data: PropTypes.array.isRequired,
+  deleteItem: PropTypes.func.isRequired,
 };
 
 export default function ItemList(props) {
   const classes = useStyles();
-  const { data } = props;
+  const { data, deleteFunc } = props;
   return (
-    <div className={classes.root} style={{"width": "500"}}>
-      <RenderRow data={data.length ? data : []}/>  
+    <div className={classes.root} style={{"width": "500", "overflowY": "scroll"}}>
+      <RenderRow data={data.length ? data : []} deleteItem={deleteFunc}/>  
     </div>
   );
 }

@@ -27,6 +27,22 @@ class HomePage extends React.Component {
         }
       }
 
+    /*******************************************
+      Function to delete the item from list 
+    *******************************************/
+      deleteItem = (e,index) => {
+      const { list } = this.state;
+      list.splice(index, 1);
+      this.setState({
+        list:[...this.state.list],
+        task: ''
+      },
+      ()=>{
+        sessionStorage.setItem('listData', JSON.stringify(this.state.list));
+      }
+      )
+
+  }
   
     /************************************************** 
       Function to get the input value fron the textbox 
@@ -71,7 +87,7 @@ class HomePage extends React.Component {
         }}
         />
       </form>
-      <ItemList data={list} />
+      <ItemList data={list} deleteFunc={this.deleteItem}/>
       <Button onClick={this.handleClick} variant="contained" color="primary" size="large">
         Add Item
       </Button>
