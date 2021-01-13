@@ -16,7 +16,7 @@ This module requires the following modules:
 ### Installation
 Clone the project using 
 ```bash
-git clone https://github.com/megha201095/todo-app.git
+git clone -b master https://github.com/megha201095/todo-app.git
 ```
 
 Use the package manager [npm](https://docs.npmjs.com/cli/v6/commands/npm-install) to install todo app.
