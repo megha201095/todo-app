@@ -11,9 +11,32 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-@media only screen and (max-width: 768px) {
-  /* For mobile phones: */
-  [class*="col-"] {
-    width: 100%;
-  }
+
+.listWrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 45px;
+}
+
+.formWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 25px;
+}
+.app {
+
+  /* Medium Devices, Desktops */
+  @media screen and (min-width : 950px) {
+    [class*="col-"] {
+    width: 50%;
+    background-color: pink;
+  }}
+
+  @media screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+      width: 100%;
+    }
+  }    
 }

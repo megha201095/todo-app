@@ -91,9 +91,7 @@ class HomePage extends React.Component {
       const { list, task } = this.state
       return (
         <>
-        <div style={{"position": "absolute", "top": "20%","left": "35%", 
-        "columnCount": "2", "display": "flex","alignItems": "normal"
-       }}>
+        <div className="formWrapper">
         <form  
         noValidate 
         autoComplete="off">
@@ -109,12 +107,16 @@ class HomePage extends React.Component {
         }}
         />
       </form>
-      <Button onClick={this.handleClick} variant="contained" color="default" size="large">
+      <Button onClick={this.handleClick} 
+       variant="contained" 
+       color="default" 
+       style={{"height":"52px"}}>
         Add Item
       </Button>
       </div>
+      <div className="listWrapper">
       <ItemList data={list} deleteFunc={this.deleteItem}/>
-
+      </div>
       </>
       );
     }

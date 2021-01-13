@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 function App(props) {
   const classes = useStyles();
   return (
-    <div className="App">
+    <div className="app">
       <Container maxWidth="lg">
          <Header />
            <div className={classes.root}>
